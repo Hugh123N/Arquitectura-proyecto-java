@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-base
+
+  datasource:
+    url: jdbc:mysql://10.147.18.177:3306/ReservaCanchas?useSSL=false&serverTimezone=UTC #${DB_URL}
+    username: sa #${DB_USER}
+    password: Basamea1 #${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect

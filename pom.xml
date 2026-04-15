@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<groupId>com.soft</groupId>
+	<artifactId>spring-base</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>spring-base</name>
+	<description>Clean Architecture + CQRS Base Project with Spring Boot 3 and Java 21</description>
+
+	<modules>
+		<module>reclutamiento-entity</module>
+		<module>reclutamiento-dto</module>
+		<module>reclutamiento-domain</module>
+		<module>reclutamiento-infrastructure</module>
+		<module>reclutamiento-application-abstractions</module>
+		<module>reclutamiento-application</module>
+		<module>reclutamiento-api</module>
+	</modules>
+
+	<properties>
+		<!-- Java Version -->
+		<java.version>21</java.version>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- CQRS / Mediator -->
+		<pipelinr.version>0.8</pipelinr.version>
+
+		<!-- Utilities -->
+		<commons-lang3.version>3.17.0</commons-lang3.version>
+
+		<!-- Testing -->
+		<testcontainers.version>1.20.4</testcontainers.version>
+		<archunit.version>1.3.0</archunit.version>
+
+		<!-- MyBatis -->
+		<mybatis-spring-boot.version>3.0.4</mybatis-spring-boot.version>
+
+		<!-- Flyway
+		<flyway.version>10.21.0</flyway.version>-->
+
+		<!-- Mappers y Utilities -->
+		<mapstruct.version>1.5.5.Final</mapstruct.version>
+		<lombok.version>1.18.34</lombok.version>
+		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+		<!-- <jjwt.version>0.12.6</jjwt.version> -->
+		<!-- <springdoc.version>2.7.0</springdoc.version> -->
+		<!-- <sentry.version>8.0.0</sentry.version> -->
+		<!-- <caffeine.version>3.1.8</caffeine.version> -->
+		<!-- <poi.version>5.3.0</poi.version> -->
+		<!-- <itext.version>8.0.5</itext.version> -->
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- ========================================== -->
+			<!-- INTERNAL MODULES                           -->
+			<!-- ========================================== -->
+			<dependency>
+				<groupId>com.soft</groupId>
+				<artifactId>reclutamiento-entity</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.soft</groupId>
+				<artifactId>reclutamiento-domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.soft</groupId>
+				<artifactId>reclutamiento-infrastructure</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.soft</groupId>
+				<artifactId>reclutamiento-dto</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		<dependency>
+			<groupId>com.soft</groupId>
+			<artifactId>reclutamiento-application-abstractions</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.soft</groupId>
+			<artifactId>reclutamiento-application</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+			<!-- ========================================== -->
+			<!-- CQRS / MEDIATOR PATTERN                    -->
+			<!-- ========================================== -->
+			<dependency>
+				<groupId>net.sizovs</groupId>
+				<artifactId>pipelinr</artifactId>
+				<version>${pipelinr.version}</version>
+			</dependency>
+
+			<!-- ========================================== -->
+			<!-- UTILITIES                                  -->
+			<!-- ========================================== -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+
+			<!-- Lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- MapStruct -->
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>${mapstruct.version}</version>
+			</dependency>
+
+			<!-- ========================================== -->
+			<!-- TESTING                                    -->
+			<!-- ========================================== -->
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>testcontainers</artifactId>
+				<version>${testcontainers.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>mysql</artifactId>
+				<version>${testcontainers.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>mssqlserver</artifactId>
+				<version>${testcontainers.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${testcontainers.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.tngtech.archunit</groupId>
+				<artifactId>archunit</artifactId>
+				<version>${archunit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- ========================================== -->
+			<!-- DATABASE                                   -->
+			<!-- ========================================== -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis-spring-boot.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Maven Compiler Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.11.0</version>
+					<configuration>
+						<source>21</source>
+						<target>21</target>
+						<compilerArgs>
+							<arg>-parameters</arg>
+						</compilerArgs>
+					</configuration>
+				</plugin>
+
+				<!-- Maven Surefire Plugin (para tests) -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.5.2</version>
+				</plugin>
+
+				<!-- JaCoCo Plugin (code coverage) -->
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.12</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>report</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Flyway Maven Plugin (para migraciones de BD)
+				<plugin>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-maven-plugin</artifactId>
+					<version>${flyway.version}</version>
+				</plugin>-->
+
+				<!-- Maven Versions Plugin (para actualizar versiones) -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>2.18.0</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

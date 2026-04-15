@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-base
+
+  datasource:
+    url: jdbc:sqlserver://10.147.18.235:1433;databaseName=Reclutamiento;encrypt=false;trustServerCertificate=true; #jdbc:mysql://10.147.18.177:3306/ReservaCanchas?useSSL=false&serverTimezone=UTC #${DB_URL}
+    username: sa #${DB_USER}
+    password: Basamea1 #${DB_PASSWORD}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver #com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect #org.hibernate.dialect.MySQLDialect
